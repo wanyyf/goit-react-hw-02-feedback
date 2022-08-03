@@ -3,7 +3,23 @@ import Statistics from './Statistics/Statistics';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions';
 import Section from './Section/Section';
 import Notification from './Notification/Notification';
-
+const options = [
+  {
+    id: 'good',
+    title: 'Good',
+    type: 'button',
+  },
+  {
+    id: 'neutral',
+    title: 'Neutral',
+    type: 'button',
+  },
+  {
+    id: 'bad',
+    title: 'Bad',
+    type: 'button',
+  },
+];
 export class App extends Component {
   state = {
     good: 0,
@@ -33,7 +49,10 @@ export class App extends Component {
     return (
       <div>
         <Section title={'Please leave feedback'}>
-          <FeedbackOptions onLeaveFeedback={this.onBtnClickCount} />
+          <FeedbackOptions
+            onLeaveFeedback={this.onBtnClickCount}
+            options={options}
+          />
         </Section>
         {Object.values(this.state).every(el => el === 0) ? (
           <Notification message={'There is no feedback'} />
